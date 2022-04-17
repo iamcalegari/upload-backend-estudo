@@ -5,6 +5,7 @@ const express = require('express');     // importar o express
 const morgan = require('morgan');       // log de requisiçoes http
 const mongoose = require('mongoose');   // manipular o banco de dados
 const path = require('path');
+const cors = require("cors");
 
 const app = express();                  // instanciando o servidor express
 
@@ -16,6 +17,7 @@ mongoose.connect(
     }
 );
 
+app.use(cors());
 app.use(express.json());                // agora o express vai conseguir lidar com o formato tipo json 
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
